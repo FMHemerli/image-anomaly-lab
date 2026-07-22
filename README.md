@@ -1,4 +1,4 @@
-<h1 align="center">image-anomaly-lab</h1>
+<h1 align="center">Visual Anomaly Detection for Industrial Parts</h1>
 
 <p align="center">
   <em>Find the defect without ever being shown one. Train only on <strong>good</strong>
