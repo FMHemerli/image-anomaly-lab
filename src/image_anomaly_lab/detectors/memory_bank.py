@@ -1,5 +1,14 @@
 """PatchCore-lite -- the strong detector: a memory of normal, scored by distance.
 
+WHAT IS A "PATCH"
+    Not a literal crop of the image -- a patch is one spatial location on the
+    frozen backbone's feature grid. A conv layer (e.g. layer2/layer3) turns an
+    image into a ``(C, H, W)`` tensor: H*W grid cells, each a C-dim vector
+    summarising the receptive field of pixels that fed into it. "Patch vectors"
+    are that grid flattened to ``(H*W, C)`` -- one embedding per cell. Distances
+    are computed per cell, then folded back into an H*W grid and upsampled to
+    make the heatmap, which is why the heatmap can localise a defect spatially.
+
 THE IDEA
     Fit: push every *good* image through the frozen backbone, collect one embedding
     per patch, and pile them all into a single "memory bank" of what normal looks
