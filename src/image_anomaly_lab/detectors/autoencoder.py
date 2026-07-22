@@ -7,6 +7,26 @@ THE IDEA
     anything it never saw, so at test time a high per-pixel reconstruction error
     marks a defect.
 
+HOW AN AUTOENCODER ACTUALLY WORKS
+    Two networks glued together, trained as one. The *encoder* is a stack of
+    downsampling convs that squeezes a 3x256x256 image down to a small latent
+    vector (``latent_dim`` numbers) -- a deliberate bottleneck, too narrow to
+    store the pixels verbatim. The *decoder* mirrors it back up with
+    transposed convs, trying to rebuild the original image from nothing but
+    that squeezed vector. Both halves are trained together with one loss:
+    MSE between input and reconstruction (see ``train_autoencoder``) -- there
+    is no separate label, the image supervises itself.
+
+    Because the bottleneck can't fit everything, the network is forced to
+    throw away whatever is least useful for reconstruction and keep only the
+    patterns that recur often enough to be "worth" spending latent capacity
+    on. Train it exclusively on good parts (see below) and that means it
+    only ever learns to store and rebuild *normal* texture -- a scratch it
+    never saw during training has nothing in the latent space to draw on, so
+    the decoder can only approximate it, leaving a reconstruction gap. That
+    gap, not the raw pixels, is what ``score_split`` turns into an anomaly
+    map.
+
 WHY IT'S THE WEAK METHOD (the actual lesson)
     Convolutional autoencoders generalise *too well*. A scratch is locally just
     "some edges", and an AE that learned to rebuild all the edges of a good part
