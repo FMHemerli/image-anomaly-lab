@@ -19,10 +19,10 @@
 </p>
 
 <p align="center">
-  <sub>Metal nuts with real defects (left), the model's anomaly heatmap (middle), and
-  the ground-truth mask (right). The heat lands on the defect — from a backbone that
-  was <strong>never shown a single defect</strong>, scoring by distance to remembered
-  good patches.</sub>
+  <sub>Metal nuts and screws with real defects (left), the model's anomaly heatmap
+  (middle), and the ground-truth mask (right). The heat lands on the defect — from a
+  backbone that was <strong>never shown a single defect</strong>, scoring by distance
+  to remembered good patches.</sub>
 </p>
 
 ---
