@@ -68,7 +68,8 @@ Two methods, deliberately contrasted:
 |---|---|---|---|---|---|
 | metal_nut | Autoencoder (baseline) | 0.341 | 0.729 | 0.362 | max-error score collapses below chance |
 | metal_nut | PatchCore-lite | **0.992** | 0.964 | 0.927 | frozen backbone, no training |
-| screw | PatchCore-lite | _tbd_ | _tbd_ | _tbd_ | |
+| screw | Autoencoder (baseline) | 0.875 | 0.879 | 0.493 | scratches localise poorly (low PRO) |
+| screw | PatchCore-lite | **0.920** | 0.990 | 0.954 | frozen backbone, no training |
 
 ## Quickstart
 
