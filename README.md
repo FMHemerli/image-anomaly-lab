@@ -14,8 +14,16 @@
   <img src="https://img.shields.io/badge/License-AGPL--3.0-2F7A57" alt="AGPL-3.0 License">
 </p>
 
-<!-- Add once M3 generates it: a good-vs-defect panel with the heatmap overlay. -->
-<!-- <p align="center"><img src="docs/assets/heatmap_panel.png" width="720"></p> -->
+<p align="center">
+  <img src="docs/assets/heatmap_panel.png" alt="Metal nut defects with the anomaly heatmap overlay next to the ground-truth mask" width="640">
+</p>
+
+<p align="center">
+  <sub>Metal nuts with real defects (left), the model's anomaly heatmap (middle), and
+  the ground-truth mask (right). The heat lands on the defect — from a backbone that
+  was <strong>never shown a single defect</strong>, scoring by distance to remembered
+  good patches.</sub>
+</p>
 
 ---
 
