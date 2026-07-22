@@ -1,0 +1,16 @@
+.venv/
+.venv-*/
+.pip-tmp/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.idea/
+.ipynb_checkpoints/
+
+# MVTec AD download (large) and fitted models / generated artifacts
+data/mvtec/
+outputs/*.png
+outputs/*.json
+memory_bank/
+*.pt

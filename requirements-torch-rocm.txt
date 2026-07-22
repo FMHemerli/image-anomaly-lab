@@ -1,0 +1,23 @@
+# PyTorch + torchvision backend for AMD RDNA4 (RX 9060 XT / Navi 44) via ROCm.
+#
+# This is the reliable GPU path on your card. Install from the ROCm wheel index --
+# the plain `pip install torch` gives you the CUDA build, which will NOT use an
+# AMD GPU. Use the rocm6.4 channel: it is the stable release that supports RDNA4
+# (gfx1200), and the wheel bundles its own ROCm libraries, so no system-wide ROCm
+# install is needed (only the in-kernel amdgpu driver):
+#
+#   pip install --index-url https://download.pytorch.org/whl/rocm6.4 torch torchvision
+#
+# The torch wheel is ~4.5 GB and pip unpacks it under /tmp. If /tmp is a
+# size-capped tmpfs, the install fails with "Errno 122: Cota da disco excedida".
+# Redirect pip's temp dir to disk first:
+#
+#   export TMPDIR="$PWD/.pip-tmp" && mkdir -p "$TMPDIR"
+#
+# If ROCm does not yet enumerate the card, force the RDNA4 gfx target:
+#
+#   export HSA_OVERRIDE_GFX_VERSION=12.0.0
+#
+# torch and torchvision are intentionally NOT pinned here so you install them from
+# the ROCm index above rather than from PyPI. torchvision matters here: we use its
+# pretrained ResNet/WideResNet weights as the frozen feature backbone.

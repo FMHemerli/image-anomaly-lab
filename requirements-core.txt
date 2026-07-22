@@ -1,0 +1,9 @@
+# Framework-agnostic core: evaluation math, thresholding, plotting, image I/O.
+# Works on any Python >= 3.10 (including 3.14). The deep-learning backend
+# (torch + torchvision) is installed separately -- see requirements-torch-rocm.txt.
+numpy
+scipy
+scikit-learn
+matplotlib
+pillow
+pytest

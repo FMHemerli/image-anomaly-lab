@@ -1,0 +1,4 @@
+# Streamlit demo dependency. The app loads a memory bank already fitted by
+# scripts/fit_memory_bank.py and needs the torch backend available too
+# (see requirements-torch-rocm.txt) to run new uploads through the backbone.
+streamlit

@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "image-anomaly-lab"
+version = "0.1.0"
+description = "Unsupervised visual defect detection on industrial parts: a naive reconstruction autoencoder contrasted with an embedding memory-bank (PatchCore-lite), trained only on good images."
+readme = "README.md"
+license = "AGPL-3.0-or-later"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "scipy",
+    "scikit-learn",
+    "matplotlib",
+    "pillow",
+]
+
+[project.optional-dependencies]
+# The deep-learning backend needs Python <= 3.12 as of this writing; the shared
+# numpy/sklearn core (evaluation math, plotting) runs on any 3.10+. torch and
+# torchvision are intentionally NOT pinned here -- install them from the ROCm
+# wheel index (see requirements-torch-rocm.txt), not from PyPI, or you get the
+# CUDA build that ignores an AMD GPU.
+torch = ["torch", "torchvision"]
+app = ["streamlit"]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
